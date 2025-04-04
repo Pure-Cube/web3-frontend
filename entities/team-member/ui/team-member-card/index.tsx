@@ -8,7 +8,7 @@ export const TeamMemberCard = (teamMember: teamMemberModelProps) => {
 		<div className="flex flex-col justify-between gap-1 bg-neutral-800 p-2 md:p-3 rounded-3xl">
 			<div className="flex flex-col">
 				<div className="relative overflow-hidden pt-[100%] w-full h-auto bg-neutral-700 rounded-3xl select-none mb-2">
-					{teamMember.image && <Image src={teamMember.image} layout="fill" objectFit="cover" objectPosition="bottom" alt="cover" />}
+					{teamMember.image && <Image src={teamMember.image} fill style={{ objectFit: "cover",objectPosition: "bottom" }} alt="cover" />}
 				</div>
 				<span className="text-base md:text-lg uppercase font-heading-semibold">{teamMember.name}</span>
 				<span className="text-sm md:text-base">{teamMember.role}</span>

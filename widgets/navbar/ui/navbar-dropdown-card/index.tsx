@@ -12,7 +12,7 @@ export const NavbarDropdownCard = ({title, body, link, icon}: NavbarDropdownCard
 	const CardElem = (
 		<div className="p-3 md:p-5 grid grid-cols-[auto_1fr] gap-3 md:gap-5 items-center rounded-3xl hover:bg-neutral-900 cursor-pointer">
 			<div className="relative h-16 w-16 rounded-2xl bg-neutral-800">
-				{icon && <Image src={icon} layout="fill" alt="icon" />}
+				{icon && <Image src={icon} fill alt="icon" />}
 			</div>
 			<div>
 				<span className="text-base md:text-lg font-heading-semibold uppercase">{title}</span>

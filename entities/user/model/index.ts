@@ -1,33 +1,33 @@
-import {makeAutoObservable} from 'mobx';
+import { makeAutoObservable } from 'mobx';
 
 export interface userModelProps {
-	userId: number | null,
-	name: string | null,
-	email: string | null,
-	gold: number | null,
-	avatar: string,
-	JWTtoken: string | null,
+  userId: number | null,
+  name: string | null,
+  email: string | null,
+  gold: number | null,
+  avatar: string,
+  JWTtoken: string | null,
 
   logout: Function,
   setJWTtoken: Function,
-	registerUser: Function,
-	loginUser: Function,
-	fetchUserData: Function,
+  registerUser: Function,
+  loginUser: Function,
+  fetchUserData: Function,
   changeName: Function,
   changePassword: Function,
 }
 
 export const userModel: userModelProps = makeAutoObservable({
-	// STORE
-	userId: null,
-	name: null,
-	email: null,
-	gold: null,
-	avatar: "/images/user/user-avatar.svg",
-	JWTtoken: null,
+  // STORE
+  userId: null,
+  name: null,
+  email: null,
+  gold: null,
+  avatar: "/images/user/user-avatar.svg",
+  JWTtoken: null,
 
-	// ACTIONS
-	logout: () => {
+  // ACTIONS
+  logout: () => {
     typeof window !== "undefined" ? localStorage.removeItem("JWTtoken") : null;
     userModel.JWTtoken = null;
   },
@@ -36,32 +36,12 @@ export const userModel: userModelProps = makeAutoObservable({
     userModel.JWTtoken = token;
   },
 
-	registerUser: async (email: string, password: string, name: string) => {
-		try {
-			const res = await fetch("https://gateway.pureblock.io/api/auth/register", {
-				method: "POST",
-				body: JSON.stringify({name, email, password}),
-				headers: {"Content-Type": "application/json"},
-			});
-	
-			const data = await res.json();
-	
-			if (data.success) {
-				typeof window !== "undefined" ? localStorage.setItem("JWTtoken", data.body.token) : null;
-				userModel.JWTtoken = data.body.token;
-			}
-
-		} catch (error) {
-			console.log("registerUser error: " + error);
-		}
-	},
-
-	loginUser: async (email: string, password: string) => {
+  registerUser: async (email: string, password: string, name: string) => {
     try {
-      const res = await fetch("https://gateway.pureblock.io/api/auth/login", {
+      const res = await fetch("https://gateway.pureblock.io/api/auth/register", {
         method: "POST",
-        body: JSON.stringify({email, password}),
-        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({ name, email, password }),
+        headers: { "Content-Type": "application/json" },
       });
 
       const data = await res.json();
@@ -72,11 +52,31 @@ export const userModel: userModelProps = makeAutoObservable({
       }
 
     } catch (error) {
-      console.log("loginUser error: " + error);  
+      console.log("registerUser error: " + error);
     }
   },
 
-	fetchUserData: async () => {
+  loginUser: async (email: string, password: string) => {
+    try {
+      const res = await fetch("https://gateway.pureblock.io/api/auth/login", {
+        method: "POST",
+        body: JSON.stringify({ email, password }),
+        headers: { "Content-Type": "application/json" },
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        typeof window !== "undefined" ? localStorage.setItem("JWTtoken", data.body.token) : null;
+        userModel.JWTtoken = data.body.token;
+      }
+
+    } catch (error) {
+      console.log("loginUser error: " + error);
+    }
+  },
+
+  fetchUserData: async () => {
     try {
       const res = await fetch("https://gateway.pureblock.io/api/auth/profile", {
         method: "GET",
@@ -96,15 +96,15 @@ export const userModel: userModelProps = makeAutoObservable({
       }
 
     } catch (error) {
-      console.log("fetchUserData error: " + error);  
+      console.log("fetchUserData error: " + error);
     }
   },
 
-	changeName: async (name: string) => {
+  changeName: async (name: string) => {
     try {
       const res = await fetch("https://gateway.pureblock.io/api/auth/change-name", {
         method: "POST",
-        body: JSON.stringify({name}),
+        body: JSON.stringify({ name }),
         headers: {
           "Content-Type": "application/json",
           Auth: `${userModel.JWTtoken}`,
@@ -112,14 +112,14 @@ export const userModel: userModelProps = makeAutoObservable({
       });
 
       const data = await res.json();
-			
+
       if (data.success) {
-				userModel.name = name;
-				console.log("your password has been successfully changed: " + data);
+        userModel.name = name;
+        console.log("your password has been successfully changed: " + data);
       }
 
     } catch (error) {
-      console.log("changeName error: " + error);  
+      console.log("changeName error: " + error);
     }
   },
 
@@ -127,7 +127,7 @@ export const userModel: userModelProps = makeAutoObservable({
     try {
       const res = await fetch("https://gateway.pureblock.io/api/auth/change-password", {
         method: "POST",
-        body: JSON.stringify({oldPassword, newPassword}),
+        body: JSON.stringify({ oldPassword, newPassword }),
         headers: {
           "Content-Type": "application/json",
           Auth: `${userModel.JWTtoken}`,
@@ -136,12 +136,12 @@ export const userModel: userModelProps = makeAutoObservable({
 
       const data = await res.json();
 
-			if (data.success) {
-				console.log("your password has been successfully changed: " + data);
+      if (data.success) {
+        console.log("your password has been successfully changed: " + data);
       }
 
     } catch (error) {
-      console.log("changePassword error: " + error);  
+      console.log("changePassword error: " + error);
     }
   },
 

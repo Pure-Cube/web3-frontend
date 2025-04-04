@@ -18,7 +18,7 @@ export const ValuesBlock = ({title, body, cards, image}: ValuesBlockProps) => {
 
 			<div className="flex flex-col lg:flex-row gap-x-5 gap-y-12 bg-neutral-900 p-3 md:p-5 rounded-3xl">
 				<div className="relative lg:w-1/2 order-1 lg:order-none rounded-3xl overflow-hidden">
-					{image && <Image src={image} layout="fill" objectFit="cover" objectPosition="bottom" alt="cover" />}
+					{image && <Image src={image} fill style={{ objectFit: "cover",objectPosition: "bottom" }} alt="cover" />}
 				</div>
 				<div className="lg:w-1/2 space-y-3 md:space-y-5">
 					<h2 className="text-2xl md:text-3xl uppercase font-heading-semibold">{title}</h2>

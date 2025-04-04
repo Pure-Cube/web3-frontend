@@ -1,8 +1,20 @@
+import { useState,useRef,useEffect } from "react";
 import { NewsCard } from "entities/news";
 import { LinkButton } from "shared/ui";
 import { newsListModel } from "./model";
 
 export const NewsList = () => {
+	const [news, setNews] = useState(null);
+	const fetched = useRef(false);  
+	useEffect(() => {
+	  if (fetched.current) return;
+	  fetched.current = true;   
+	  fetch("/api/news?id=3d5c7f64bbd450c5e85f0d1cf0202341")
+		.then((res) => res.json())
+		.then((data) => setNews(data))
+		.catch((error) => console.error("Error fetching news:", error));
+	}, []);
+  
 	return (
 		<section className="bg-neutral-900 p-3 md:p-5 rounded-3xl space-y-3 md:space-y-5">
 			<div className="flex items-center justify-between gap-3 md:gap-5">

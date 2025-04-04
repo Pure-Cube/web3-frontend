@@ -10,7 +10,7 @@ export const Footer = () => {
 
 			<Link href="/">
 				<div className="relative h-20 w-24 md:w-36">
-					<Image src="/logo.svg" layout="fill" alt="logo" />
+					<Image src="/logo.svg" fill alt="logo" />
 				</div>
 			</Link>
 
@@ -100,7 +100,7 @@ export const Footer = () => {
 					/>
 				</div>
 			</div>
-			<span className="text-sm md:text-base">© 2022 PureCube</span>
+			<span className="text-sm md:text-base">© 2025 PureCube</span>
 		</footer>
 	)
 }

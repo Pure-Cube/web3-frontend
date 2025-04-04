@@ -10,7 +10,7 @@ export interface GameCardProps {
 export const GameCard = ({link, target="_self", isVisible=true, image}: GameCardProps) => {
 	const elem = (
 		<span className={`inline-block overflow-hidden relative pt-[66%] rounded-3xl ${!isVisible ? "bg-transparent cursor-default" : "bg-neutral-800"}`}>
-			{image && <Image src={image} layout="fill" objectFit="cover" alt="cover" />}
+			{image && <Image src={image} fill style={{objectFit: "cover",}} alt="cover" />}
 		</span>
 	)
 

@@ -13,7 +13,7 @@ export const Header = ({navbar}: HeaderProps) => {
 
 			<Link href="/">
 				<div className="relative h-12 w-20 md:w-24">
-					<Image src="/logo.svg" layout="fill" alt="logo" />
+					<Image src="/logo.svg" fill alt="logo" />
 				</div>
 			</Link>
 

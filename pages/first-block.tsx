@@ -95,7 +95,7 @@ export default function FirstBlockPage() {
 
 						<div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-5 js-show-on-scroll">
 							<div className="relative pt-[56%] rounded-3xl">
-								<Image src="/images/frog-first.png" layout="fill" objectFit="cover" alt="cover" />
+								<Image src="/images/frog-first.png" fill style={{objectFit: "cover"}} alt="cover" />
 							</div>
 							<div className="space-y-3 md:space-y-5">
 								<h2 className="text-2xl md:text-3xl font-heading-semibold uppercase">Play, Mint, Earn, Buy or Sell. Your item - Your choice</h2>
@@ -129,7 +129,7 @@ export default function FirstBlockPage() {
 								</div>
 							</div>
 							<div className="relative pt-[56%] rounded-3xl">
-								<Image src="/images/first-first.png" layout="fill" objectFit="cover" alt="cover" />
+								<Image src="/images/first-first.png" fill style={{objectFit: "cover"}} alt="cover" />
 							</div>
 						</div>
 

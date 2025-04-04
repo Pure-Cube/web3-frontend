@@ -10,7 +10,7 @@ export const GameInfo = (game: gameModelProps) => {
 
 				<div className="md:w-8/12 space-y-3 md:space-y-5">
 					<div className="relative overflow-hidden pt-[66%] md:pt-[56%] bg-neutral-900 rounded-3xl">
-						{game.cover && <Image src={game.cover} layout="fill" objectFit="cover" objectPosition="bottom" alt="cover" />}
+						{game.cover && <Image src={game.cover} fill style={{ objectFit: "cover",objectPosition: "bottom" }} alt="cover" />}
 					</div>
 					<div className={`bg-neutral-900 p-3 md:p-5 rounded-3xl space-y-3 md:space-y-5 ${!game.about && "hidden"}`}>
 						{

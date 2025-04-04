@@ -12,7 +12,7 @@ export const GameListItem = (game: GameListItemProps) => {
 		<div className={`grid grid-cols-1 xl:grid-cols-2 gap-3 md:gap-5 items-center p-3 md:p-5 rounded-3xl ${game.bgTransparent ? "bg-transparent" : "bg-neutral-900"}`}>
 
 			<div className="relative overflow-hidden pt-[56%] rounded-3xl">
-				{game.cover && <Image src={game.cover} layout="fill" objectFit="cover" objectPosition="bottom" alt="cover" />}
+				{game.cover && <Image src={game.cover} fill style={{ objectFit: "cover",objectPosition: "bottom" }} alt="cover" />}
 			</div>
 
 

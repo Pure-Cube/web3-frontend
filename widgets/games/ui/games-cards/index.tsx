@@ -16,7 +16,7 @@ export const GamesCards = ({title, subtitle, cards, image}: GamesCardsProps) => 
 		<section className="bg-neutral-900 overflow-hidden rounded-3xl">
 
 			<div className="relative overflow-hidden pt-[30%] bg-neutral-800 rounded-3xl">
-				{image && <Image src={image} layout="fill" objectFit="cover" objectPosition="left" alt="cover" />}
+				{image && <Image src={image} fill  style={{ objectPosition: "left",objectFit: "cover" }} alt="cover" />}
 				<h3 className="relative text-2xl md:text-4xl font-heading-semibold uppercase p-3 md:p-5">{title}</h3>
 			</div>
 
